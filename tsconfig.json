@@ -1,32 +1,92 @@
 {
-    "compilerOptions": {
-        "moduleResolution": "node",
-        "module": "commonjs",
-        "target": "es2022",
-        "lib": [
-            "es2022",
-            "dom"
-        ],
-        "types": [
-            "node",
-            "@wdio/globals/types",
-            "expect-webdriverio",
-            "@wdio/mocha-framework",
-            "@wdio/appium-service",
-            "@wdio/visual-service"
-        ],
-        "skipLibCheck": true,
-        "noEmit": true,
-        "allowImportingTsExtensions": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
-    },
-    "include": [
-        "test",
-        "wdio.conf.ts"
-    ]
+  "compilerOptions": {
+    // Module Resolution
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es2022",
+    "lib": ["es2022", "dom"],
+    
+    // WebDriverIO Types
+    "types": [
+      "node",
+      "@wdio/globals/types",
+      "expect-webdriverio",
+      "@wdio/mocha-framework",
+      "@wdio/appium-service",
+      "@wdio/visual-service"
+    ],
+    
+    // Output & Compilation
+    "outDir": "./dist",
+    "rootDir": "./",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    
+    // Strict Type Checking
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
+    
+    // Additional Checks
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noPropertyAccessFromIndexSignature": false,
+    
+    // Advanced Options
+    "skipDefaultLibCheck": true,
+    "declaration": false,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    
+    // Path Mapping (optional - for cleaner imports)
+    "baseUrl": "./",
+    "paths": {
+      "@pages/*": ["pages/*"],
+      "@tests/*": ["test/*"],
+      "@utils/*": ["utils/*"],
+      "@config/*": ["config/*"],
+      "@data/*": ["data/*"]
+    }
+  },
+  
+  "include": [
+    "test/**/*",
+    "pages/**/*",
+    "utils/**/*",
+    "config/**/*",
+    "data/**/*",
+    "wdio.conf.ts",
+    "**/*.ts"
+  ],
+  
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "allure-results",
+    "allure-report",
+    "logs"
+  ],
+  
+  "ts-node": {
+    "esm": false,
+    "experimentalSpecifierResolution": "node"
+  }
 }

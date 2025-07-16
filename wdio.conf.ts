@@ -6,6 +6,7 @@ export const config: WebdriverIO.Config = {
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
     tsConfigPath: './tsconfig.json',
+    injectGlobals: true,
 
     port: 4723,
     //
@@ -24,7 +25,7 @@ export const config: WebdriverIO.Config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './tests'
+        './tests/**/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -53,13 +54,21 @@ export const config: WebdriverIO.Config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
-        browserName: 'Chrome',
-        'appium:deviceName': 'Android GoogleAPI Emulator',
-        'appium:platformVersion': '12.0',
-        'appium:automationName': 'UiAutomator2'
+        'appium:appPackage': 'com.wdiodemoapp',
+        'appium:deviceName': '9PBA9HK7MJBE6XZP',
+        'appium:platformVersion': '15.0',
+        'appium:appActivity': '.MainActivity',
+        'appium:automationName': 'UiAutomator2',
+        'appium:noReset': true,
+        'appium:newCommandTimeout': 240,
+        'appium:autoGrantPermissions': true,
+        'appium:chromedriverExecutableDir': './drivers',
+        'appium:disableWindowAnimation': true,
+        'appium:adbExecTimeout': 120000,
+
     }],
+
 
     //
     // ===================
@@ -108,7 +117,12 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium', 'visual'],
+    services: [['appium', {
+        appium: {
+            command: 'appium', // Ini perintah global
+        }
+    }]],
+
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
