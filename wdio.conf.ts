@@ -56,18 +56,20 @@ export const config: WebdriverIO.Config = {
     capabilities: [{
         platformName: 'Android',
         'appium:appPackage': 'com.wdiodemoapp',
-        'appium:deviceName': '9PBA9HK7MJBE6XZP',
-        'appium:platformVersion': '15.0',
-        'appium:appActivity': '.MainActivity',
+        'appium:appActivity': 'com.wdiodemoapp.MainActivity',
+        'appium:deviceName': 'Custom Phone',
+        'appium:platformVersion': '14.0',
         'appium:automationName': 'UiAutomator2',
         'appium:noReset': true,
         'appium:newCommandTimeout': 240,
         'appium:autoGrantPermissions': true,
-        'appium:chromedriverExecutableDir': './drivers',
         'appium:disableWindowAnimation': true,
         'appium:adbExecTimeout': 120000,
-
+        'appium:avdLaunchTimeout': 120000,
+        'appium:avdReadyTimeout': 120000,
+        'appium:udid': '192.168.56.101:5555'
     }],
+
 
 
     //
